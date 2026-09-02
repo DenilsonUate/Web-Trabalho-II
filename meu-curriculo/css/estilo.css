@@ -1,0 +1,1002 @@
+/* =========================================================
+   ESTILO.CSS — folha de estilos partilhada
+   Site de Currículo Pessoal — Denilson [Apelido]
+   Universidade Licungo — Programação de Design Web
+   ========================================================= */
+
+/* -------------------- 1. Variáveis globais -------------------- */
+:root {
+  /* Paleta azul-ciano e branco */
+  /* Paleta azul-ciano e branco — fundo claro */
+  --color-bg: #FFFFFF;
+  --color-surface: #F1F9FC;
+  --color-surface-2: #E3F1F7;
+  --color-gold: #0891B2;
+  --color-teal: #2563EB;
+  --color-red: #0B2540;
+  --color-cream: #0B1F30;
+  --color-muted: #55708A;
+  --color-border: #D4E6EF;
+  --color-error: #DC2626; /* usado apenas para sinalizar campos inválidos no formulário */
+
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.75rem;
+  --space-4: 3rem;
+  --space-5: 5rem;
+
+  --radius-sm: 8px;
+  --radius: 16px;
+  --radius-lg: 28px;
+
+  --shadow-card: 0 14px 34px rgba(6, 10, 16, 0.45);
+  --shadow-soft: 0 4px 14px rgba(6, 10, 16, 0.3);
+
+  --transition-fast: 0.2s ease;
+  --transition-med: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+
+  --header-height: 4.5rem;
+}
+
+/* -------------------- 2. Reset e modelo de caixa -------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* box-sizing consistente em todo o site */
+  margin: 0;
+  padding: 0;
+}
+
+/* Elemento raiz do documento */
+html {
+  scroll-behavior: smooth;
+  font-size: 100%; /* 1rem = 16px, base para unidades relativas */
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-cream);
+  line-height: 1.65;
+  min-height: 100vh; /* unidade relativa à viewport */
+  overflow-x: hidden;
+}
+
+/* Imagens nunca ultrapassam a largura do contentor; display:block remove o espaço fantasma abaixo da imagem */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Links herdam a cor do texto envolvente e não têm sublinhado por omissão */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Reset aplicado às listas de interface (menu, rodapé, "pills").
+   As listas de conteúdo (ex: .cv-list em about.html) reativam o
+   marcador mais abaixo — ordenadas mostram números, não ordenadas
+   mostram •, conforme exigido. */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Estilo tipográfico partilhado por todos os títulos */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--color-cream);
+}
+
+/* Tamanhos de título usando clamp() (mínimo, valor fluido, máximo) — responsivo sem precisar de media query */
+h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.3rem); margin-bottom: var(--space-3); }
+h3 { font-size: 1.3rem; }
+
+p { max-width: 65ch; }
+
+/* Foco visível — acessibilidade de teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* -------------------- 3. Cabeçalho / Navegação -------------------- */
+header.site-header {
+  position: sticky; /* ver explicação de 'position' mais abaixo */
+  top: 0;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Contentor interno do cabeçalho: centra o conteúdo e distribui logótipo/menu nas pontas */
+.header-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-3);
+}
+
+/* Nome do estudante, usado como logótipo/link para a Home */
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+
+/* Parte final do logótipo (".dev") com cor e fonte diferentes do resto */
+.logo span {
+  color: var(--color-gold);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+}
+
+/* Lista do menu principal, em linha (horizontal) */
+nav.main-nav ul {
+  display: flex;
+  gap: var(--space-1);
+}
+
+/* Seletor de irmão adjacente: espaça itens de navegação exceto o primeiro */
+nav.main-nav li + li {
+  margin-left: 0.15rem;
+}
+
+/* Estilo base de cada link do menu */
+nav.main-nav a {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.55rem 0.9rem;
+  border-radius: var(--radius-sm);
+  position: relative;
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+/* Pseudo-elemento ::before para o marcador decorativo "> " antes do link ativo */
+nav.main-nav a.active::before {
+  content: "> ";
+  color: var(--color-teal);
+}
+
+/* Destaque de fundo/cor para o link da página atual */
+nav.main-nav a.active {
+  background-color: var(--color-surface);
+  color: var(--color-gold);
+}
+
+/* Cor ao passar o rato ou focar por teclado */
+nav.main-nav a:hover,
+nav.main-nav a:focus-visible {
+  color: var(--color-teal);
+}
+
+/* Pseudo-elemento ::after: sublinhado animado ao passar o rato */
+nav.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 0.3rem;
+  height: 2px;
+  background-color: var(--color-teal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-fast);
+}
+
+/* Ao passar o rato, o sublinhado (::after) expande de 0 para a largura total */
+nav.main-nav a:hover::after {
+  transform: scaleX(1);
+}
+
+/* -------------------- 5. Layout principal -------------------- */
+main {
+  display: block;
+}
+
+/* Contentor central com largura máxima, usado em todas as secções */
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-3);
+}
+
+/* Seletor de irmão adjacente (2ª ocorrência): acrescenta borda apenas entre secções consecutivas */
+section + section {
+  border-top: 1px solid var(--color-border);
+}
+
+/* Pequeno rótulo em maiúsculas, usado acima dos títulos de secção */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  margin-bottom: var(--space-1);
+  display: inline-block;
+}
+
+/* -------------------- 6. Botões -------------------- */
+/* Estilo base partilhado pelos dois tipos de botão (primário e ghost) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+/* Botão de destaque, com gradiente de fundo */
+.btn-primary {
+  background: linear-gradient(120deg, var(--color-gold), var(--color-red));
+  color: var(--color-bg);
+  font-weight: 700;
+  box-shadow: var(--shadow-soft);
+}
+
+/* Efeito de elevação ao passar o rato ou focar */
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+/* Botão secundário, apenas com contorno */
+.btn-ghost {
+  border-color: var(--color-border);
+  color: var(--color-cream);
+}
+
+/* Contorno e texto mudam de cor no hover/focus */
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
+  border-color: var(--color-teal);
+  color: var(--color-teal);
+}
+
+/* -------------------- 7. Cartões (cards) genéricos -------------------- */
+/* Estilo base de cartão, reutilizado em projetos, hobbies e destaques da Home */
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-med);
+}
+
+/* :focus-within destaca o cartão quando um elemento lá dentro (ex: um link) recebe foco */
+.card:hover,
+.card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card);
+  border-color: var(--color-teal);
+}
+
+/* Imagem do cartão recortada para preencher sempre a mesma proporção (16:10) */
+.card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+/* Espaçamento interno do texto do cartão */
+.card-body {
+  padding: var(--space-3);
+}
+
+/* Espaço entre o título do cartão e o texto seguinte */
+.card-body h3 {
+  margin-bottom: 0.5rem;
+}
+
+/* Texto do cartão em cor mais suave que o título */
+.card-body p {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+/* Seletor de atributo: destaca links externos nos cartões de projeto */
+.card a[href^="http"] {
+  color: var(--color-gold);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+/* -------------------- 8. Rodapé -------------------- */
+/* Fundo e borda superior do rodapé */
+footer.site-footer {
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Colunas do rodapé, distribuídas com Flexbox */
+.footer-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-3) var(--space-3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  justify-content: space-between;
+}
+
+/* Título de cada coluna do rodapé */
+.footer-col h4 {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-teal);
+  margin-bottom: var(--space-2);
+}
+
+/* Espaçamento entre itens de cada lista do rodapé */
+.footer-col ul li {
+  margin-bottom: 0.4rem;
+  color: var(--color-muted);
+}
+
+/* Cor ao passar o rato sobre um link do rodapé */
+.footer-col ul li a:hover {
+  color: var(--color-gold);
+}
+
+/* Linha de assinatura final, centrada, abaixo das colunas */
+.footer-bottom {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  padding: var(--space-2) var(--space-3) var(--space-4);
+}
+
+/* -------------------- 9. Animações -------------------- */
+@keyframes fade-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Aplica a animação fade-rise definida acima a qualquer elemento com esta classe */
+.animate-in {
+  animation: fade-rise 0.7s ease both;
+}
+
+/* -------------------- 10. position: explicação (exigido em 5.2) -------------------- */
+/*
+  static   → posição normal no fluxo do documento; top/left/right/bottom
+             e z-index não têm qualquer efeito. É o valor por omissão.
+  relative → mantém o elemento no fluxo normal, mas top/left/right/bottom
+             deslocam-no visualmente a partir da sua posição original,
+             sem afetar os elementos vizinhos.
+  absolute → remove o elemento do fluxo normal; é posicionado em relação
+             ao antepassado posicionado mais próximo (não "static"), ou
+             ao <html> se não existir nenhum.
+  fixed    → remove o elemento do fluxo e posiciona-o em relação à
+             janela do navegador (viewport); mantém-se fixo mesmo com
+             scroll da página.
+  sticky   → híbrido entre relative e fixed: comporta-se como relative
+             até que a página atinja o limiar definido (ex: top: 0),
+             altura em que passa a comportar-se como fixed dentro do
+             seu contentor. É o valor usado no header.site-header
+             acima, para manter o menu sempre visível ao rolar a página.
+*/
+
+/* =========================================================
+   11. PÁGINA — Banner interior (about, portfolio, hobbies, contact)
+   ========================================================= */
+/* Faixa de título usada no topo de about/portfolio/hobbies/contact */
+.page-banner {
+  padding: var(--space-4) var(--space-3) var(--space-3);
+  background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-bg) 100%);
+  text-align: left;
+}
+
+/* Parágrafo de apoio dentro da faixa de título */
+.page-banner p {
+  color: var(--color-muted);
+  margin-top: var(--space-1);
+}
+
+/* =========================================================
+   12. HOME — Hero
+   ========================================================= */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-5);
+  position: relative;
+}
+
+/* Coluna de texto do hero: ocupa cerca de 55% do espaço disponível */
+.hero-text {
+  flex: 1 1 55%;
+}
+
+/* Frase de efeito ('tagline'), em itálico e com sombra de texto subtil */
+.hero-text .tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--color-gold);
+  margin: var(--space-2) 0 var(--space-3);
+  text-shadow: 0 2px 14px rgba(8, 145, 178, 0.22);
+}
+
+/* Parágrafo de descrição, logo abaixo da tagline */
+.hero-text .lede {
+  color: var(--color-muted);
+  margin-bottom: var(--space-3);
+}
+
+/* Contentor dos botões de destaque (call to action) */
+.hero-actions {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* Coluna da imagem do hero: ocupa cerca de 40% do espaço, imagem centrada */
+.hero-media {
+  flex: 1 1 40%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Moldura do avatar; position:relative permite posicionar elementos futuros em relação a ela */
+.avatar-frame {
+  position: relative;
+  width: min(320px, 100%);
+}
+
+/* Avatar recortado em círculo, com borda e sombra */
+.avatar-frame img {
+  border-radius: 50%;
+  border: 4px solid var(--color-surface-2);
+  box-shadow: var(--shadow-card);
+}
+
+/* Grelha de "skills" rápidas na home, usando seletor filho direto */
+.quick-skills > li {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-teal);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  margin: 0.25rem 0.4rem 0.25rem 0;
+}
+
+/* Espaçamento vertical da secção de vídeo/áudio */
+.media-block {
+  padding: var(--space-4) 0;
+}
+
+/* Moldura do vídeo: mantém sempre a proporção 16:9, com cantos arredondados e sombra */
+.media-block .video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 16/9;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border);
+}
+
+/* O vídeo/iframe preenche sempre 100% da moldura acima */
+.media-block .video-wrapper iframe,
+.media-block .video-wrapper video {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Largura do leitor de áudio, com cor de destaque do sistema (accent-color) */
+audio {
+  width: 100%;
+  max-width: 480px;
+  accent-color: var(--color-teal);
+}
+
+/* =========================================================
+   13. SOBRE / CURRÍCULO — listas e tabela
+   ========================================================= */
+/* Duas colunas no ecrã largo: texto de formação à esquerda, certificados à direita */
+.cv-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+.cv-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-left: 1.5rem; /* espaço para o marcador (número ou marca) */
+}
+
+/* Pequeno espaçamento entre o marcador (número/•) e o texto de cada item */
+.cv-list li {
+  padding-left: 0.5rem;
+}
+
+/* Listas ordenadas mostram números; não ordenadas mostram marca • */
+ol.cv-list {
+  list-style: decimal;
+}
+
+ul.cv-list {
+  list-style: disc;
+}
+
+/* Pseudo-elemento ::marker: permite colorir o próprio número/• da lista */
+.cv-list li::marker {
+  color: var(--color-teal);
+  font-weight: 600;
+}
+
+/* Primeiro item da lista de formação recebe destaque no marcador */
+.timeline li:first-child::marker {
+  color: var(--color-gold);
+}
+
+/* Remove o espaçamento inferior do último item da lista de formação */
+.timeline li:last-child {
+  padding-bottom: 0;
+}
+
+/* Tabela de competências técnicas: ocupa toda a largura, bordas colapsadas numa só linha */
+table.skills-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* Legenda da tabela, alinhada à esquerda e em fonte monoespaçada */
+table.skills-table caption {
+  caption-side: top;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-bottom: var(--space-1);
+}
+
+/* Cabeçalho da tabela: fundo diferenciado e texto em maiúsculas */
+table.skills-table thead th {
+  background-color: var(--color-surface-2);
+  color: var(--color-gold);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  font-family: var(--font-mono);
+  padding: 0.9rem 1rem;
+  text-align: left;
+}
+
+/* Células do corpo da tabela, com borda superior fina a separar linhas */
+table.skills-table tbody td {
+  padding: 0.85rem 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+/* nth-child: zebra striping nas linhas da tabela */
+table.skills-table tbody tr:nth-child(even) {
+  background-color: rgba(11, 37, 64, 0.035);
+}
+
+/* Barra de nível de proficiência: a largura é definida inline em cada linha da tabela (ex: width:85%) */
+.level {
+  display: inline-block;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--color-teal), var(--color-gold));
+}
+
+/* Moldura de cada certificado (imagem + legenda) */
+figure.certificate {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+/* Legenda do certificado, abaixo da imagem */
+figure.certificate figcaption {
+  padding: var(--space-2);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+}
+
+/* Empilha os certificados verticalmente por omissão (1 coluna); passa a 2 colunas no tablet */
+.certificates-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+/* =========================================================
+   14. PORTFÓLIO — CSS Grid
+   ========================================================= */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-3);
+}
+
+/* =========================================================
+   15. HOBBIES — Flexbox
+   ========================================================= */
+.hobbies-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: var(--space-3);
+}
+
+/* Cada cartão de hobby cresce/encolhe de forma flexível, com largura máxima definida */
+.hobby-card {
+  flex: 1 1 220px;
+  max-width: 260px;
+  text-align: center;
+  padding: var(--space-3);
+}
+
+/* Imagem do hobby com cantos arredondados e espaço antes do título */
+.hobby-card img {
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-2);
+}
+
+/* =========================================================
+   16. CONTACTO — formulário
+   ========================================================= */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+/* Contentor de cada grupo de campos do formulário (Dados pessoais, Detalhes, Mensagem) */
+form.contact-form fieldset {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+/* Título de cada fieldset, em maiúsculas e cor de destaque */
+form.contact-form legend {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--color-teal);
+  padding: 0 0.5rem;
+}
+
+/* Agrupa dois campos lado a lado, quebrando para baixo em ecrãs estreitos */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+/* Cada campo individual (label + input), com largura mínima flexível */
+.form-field {
+  flex: 1 1 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* Rótulo do campo, discreto e em cor suave */
+.form-field label {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+/* Texto de ajuda pequeno, ex: explicação do formato do telefone */
+.form-field .hint {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+}
+
+/* Estilo partilhado por todos os tipos de campo de texto, select e textarea */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+input[type="file"],
+select,
+textarea {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-cream);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 0.9rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* Área de texto com altura mínima maior e redimensionável apenas na vertical */
+textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* Seletor de atributo: campo email recebe um acento visual próprio */
+input[type="email"] {
+  border-left: 3px solid var(--color-teal);
+}
+
+/* Contorno muda de cor ao passar o rato sobre qualquer campo */
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: var(--color-muted);
+}
+
+/* Contorno e brilho ao focar um campo (clique ou Tab) */
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.18);
+  outline: none;
+}
+
+/* Validação nativa: estado inválido só é sinalizado depois de interação */
+input:not(:placeholder-shown):invalid,
+textarea:not(:placeholder-shown):invalid {
+  border-color: var(--color-error);
+}
+
+/* Contorno fica azul-esverdeado quando o campo é válido, também só depois de haver texto */
+input:not(:placeholder-shown):valid,
+textarea:not(:placeholder-shown):valid {
+  border-color: var(--color-teal);
+}
+
+/* Checkbox / radio estilizados sem aparência padrão do navegador */
+.choice-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* Cada opção do grupo (rádio/checkbox) é estilizada como um "pill" clicável */
+.choice-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-cream);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+/* appearance:none remove o visual padrão do navegador, para desenhar o nosso próprio círculo/quadrado */
+.choice-group input[type="radio"],
+.choice-group input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-muted);
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  transition: border-color var(--transition-fast);
+}
+
+/* A checkbox usa cantos quadrados (o radio, acima, usa 50% = círculo) */
+.choice-group input[type="checkbox"] {
+  border-radius: 4px;
+}
+
+/* Contorno muda de cor quando a opção está selecionada */
+.choice-group input[type="radio"]:checked,
+.choice-group input[type="checkbox"]:checked {
+  border-color: var(--color-teal);
+}
+
+/* Círculo interior desenhado com ::after, visível apenas quando selecionado */
+.choice-group input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background-color: var(--color-teal);
+}
+
+/* Quadrado interior desenhado com ::after, visível apenas quando selecionado */
+.choice-group input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 2px;
+  background-color: var(--color-teal);
+}
+
+/* :has() permite estilizar o <label> com base no estado do input que está lá dentro */
+.choice-group label:has(input:checked) {
+  border-color: var(--color-teal);
+  color: var(--color-teal);
+}
+
+/* Alinha o botão de envio e a nota de aviso lado a lado */
+.form-submit {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* Texto pequeno junto ao botão de envio */
+.form-note {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+/* Cartão lateral com formas alternativas de contacto */
+.contact-info-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  height: fit-content;
+}
+
+/* Lista de contactos, empilhada verticalmente */
+.contact-info-card ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+/* Cor ao passar o rato sobre um link de contacto */
+.contact-info-card a:hover {
+  color: var(--color-gold);
+}
+
+/* =========================================================
+   17. UTILITÁRIOS — substituem todos os estilos que estavam
+   inline no HTML, para que a estilização fique 100% nos
+   ficheiros .css, como exige o enunciado.
+   ========================================================= */
+
+/* Remove o espaçamento vertical extra do .container quando este
+   está dentro da faixa de título (.page-banner já tem o seu próprio
+   padding, por isso o container lá dentro fica "rente" a ela) */
+.page-banner .container {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Texto secundário dentro da lista de formação/experiência (about.html) */
+.cv-meta {
+  color: var(--color-muted);
+}
+
+/* Variante monoespaçada e menor do .cv-meta, para a linha "2º ano · em curso" */
+.cv-meta-mono {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+/* Espaço extra acima de um título de secção quando este vem logo a seguir a outro bloco */
+.section-gap-top {
+  margin-top: var(--space-4);
+}
+
+/* Larguras fixas para as barras de nível da tabela de competências (about.html);
+   uma classe por valor, em vez de "width" inline em cada <span class="level"> */
+.level-65 { width: 65%; }
+.level-70 { width: 70%; }
+.level-80 { width: 80%; }
+.level-85 { width: 85%; }
+.level-90 { width: 90%; }
+
+/* Espaço extra abaixo de um grupo de campos do formulário (rádio/checkbox), antes do próximo grupo */
+.form-field-choice {
+  margin-bottom: var(--space-2);
+}
+
+/* Cores de ícone reutilizáveis (Font Awesome), para não repetir "color" inline em cada <i> */
+.icon-teal { color: var(--color-teal); }
+.icon-gold { color: var(--color-gold); }
+.icon-red { color: var(--color-red); }
+.icon-indigo { color: #6E8CDC; }
+
+/* Parágrafo introdutório usado no topo de blocos de secção (ex: antes de um vídeo incorporado) */
+.section-intro {
+  color: var(--color-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* Bloco do áudio local na Home: espaço acima para o separar do vídeo */
+.audio-block {
+  margin-top: var(--space-3);
+}
+
+/* Rótulo pequeno acima do leitor de áudio (ex: "Mensagem de boas-vindas") */
+.audio-label {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-teal);
+  margin-bottom: 0.5rem;
+}
+
+/* Reduz o espaçamento superior de uma secção que vem logo a seguir a outra, sem a borda habitual */
+.section-compact-top {
+  padding-top: var(--space-3);
+}
+
+/* Descrição pequena e discreta usada nos cartões de hobbies */
+.hobby-desc {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
