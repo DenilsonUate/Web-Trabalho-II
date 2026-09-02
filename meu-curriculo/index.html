@@ -1,0 +1,195 @@
+<!-- Declaração do tipo de documento: informa o navegador que este é um documento HTML5 -->
+<!DOCTYPE html>
+<!-- Elemento raiz do documento; lang="pt-MZ" indica português de Moçambique, usado por leitores de ecrã e motores de busca -->
+<html lang="pt-MZ">
+<head>
+  <!-- Define a codificação de caracteres como UTF-8, necessária para acentos e caracteres especiais do português -->
+  <meta charset="UTF-8">
+  <!-- Meta viewport: obrigatória para responsividade — ajusta a largura da página à largura do ecrã do dispositivo -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Título da aba do navegador e usado por motores de busca -->
+  <title>Denilson Uate — Currículo Pessoal</title>
+  <!-- Meta descrição: usada por motores de busca para o resumo da página nos resultados -->
+  <meta name="description" content="Página pessoal de Denilson, estudante de Programação e Design Web na Universidade Licungo, Beira, Moçambique.">
+  <!-- Pré-conexão ao Google Fonts para acelerar o carregamento das fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Importa as três famílias tipográficas usadas no site: Fraunces (títulos), Inter (texto) e JetBrains Mono (menu/código) -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Biblioteca de ícones Font Awesome via CDN — permitido pelo enunciado (recurso tipográfico/ícones, não é framework de layout) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Folha de estilos partilhada: header, footer, tipografia, variáveis e regras gerais -->
+  <link rel="stylesheet" href="css/estilo.css">
+  <!-- Folha de estilos responsiva: media queries mobile-first -->
+  <link rel="stylesheet" href="css/responsivo.css">
+</head>
+<body>
+
+  <!-- ===================== CABEÇALHO (partilhado por todas as páginas) ===================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- Logótipo/nome do estudante, também funciona como link para a Home -->
+      <a href="index.html" class="logo">Denilson<span>.dev</span></a>
+      <!-- Menu de navegação principal, idêntico em todas as páginas; aria-label ajuda leitores de ecrã a identificar esta região -->
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul>
+          <!-- Link da página atual recebe a classe "active" para destaque visual -->
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">Currículo</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <li><a href="hobbies.html">Hobbies</a></li>
+          <li><a href="contact.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== SECÇÃO HERO: apresentação pessoal ===================== -->
+    <section class="container hero">
+      <!-- Bloco de texto do hero: nome, tagline, descrição e chamadas para ação -->
+      <div class="hero-text animate-in">
+        <!-- Rótulo pequeno acima do título (categoria/função) -->
+        <span class="eyebrow">Estudante &amp; Programador Web</span>
+        <!-- h1 único da página, obrigatório para hierarquia de headings coerente -->
+        <h1>Olá, sou o Denilson.</h1>
+        <!-- Frase de efeito ("tagline") pedida no enunciado -->
+        <p class="tagline">"Construo software a pensar em quem o vai usar — em Moçambique e além."</p>
+        <!-- Breve descrição de competências -->
+        <p class="lede">
+          Estudante do 2º ano de Programação e Design Web na Universidade Licungo (Beira),
+          apaixonado por transformar problemas do dia a dia em aplicações desktop e web funcionais,
+          desde sistemas em JavaFX até plataformas web construídas do zero em HTML, CSS e JavaScript.
+        </p>
+        <!-- Lista não ordenada de competências, estilizada como "pills"/etiquetas via CSS -->
+        <ul class="quick-skills">
+          <li>Java / JavaFX</li>
+          <li>HTML5 &amp; CSS3</li>
+          <li>JavaScript</li>
+          <li>MySQL</li>
+          <li>Git &amp; GitHub</li>
+        </ul>
+        <!-- Botões de destaque ("call to action"): o principal leva à página de Contacto, como pede o enunciado -->
+        <div class="hero-actions">
+          <a href="contact.html" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Fale comigo</a>
+          <a href="portfolio.html" class="btn btn-ghost"><i class="fa-solid fa-diagram-project"></i> Ver projetos</a>
+        </div>
+      </div>
+      <!-- Bloco de imagem do hero: avatar do estudante -->
+      <div class="hero-media">
+        <!-- <figure> envolve a imagem do avatar (uso semântico, ainda que sem <figcaption> aqui) -->
+        <figure class="avatar-frame">
+          <!-- Avatar com alt descritivo (nunca vazio) e width/height para evitar saltos de layout -->
+          <img src="assets/img/avatar.png" alt="Avatar ilustrado de Denilson Uate, com iniciais DU sobre um círculo em tons de azul e ciano" width="400" height="400">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===================== SECÇÃO DE MULTIMÉDIA: vídeo local + áudio ===================== -->
+    <section class="media-block">
+      <div class="container">
+        <span class="eyebrow">Apresentação</span>
+        <h2>Como construí a minha primeira página, em vídeo</h2>
+        <!-- Texto introdutório do bloco de vídeo/áudio; estilo inline pontual apenas para cor/margem, sem repetir regras do CSS externo -->
+        <p class="section-intro">
+          Abaixo, um vídeo (ficheiro local, com imagem de pré-visualização) mostrando o código
+          HTML5 e CSS3 da minha primeira página, do zero até ao resultado no navegador — e uma
+          mensagem em voz de boas-vindas, com um resumo falado da estrutura de uma página HTML5.
+        </p>
+
+        <!-- Vídeo nativo HTML5: controls dá controlos ao utilizador; preload="metadata" só carrega informação básica antes do play;
+             poster mostra uma imagem antes do vídeo começar; width/height evitam saltos de layout -->
+        <div class="video-wrapper">
+          <video controls preload="metadata" poster="assets/img/video-poster.png" width="1280" height="720">
+            <!-- <source> com atributo type indica o formato do ficheiro ao navegador -->
+            <source src="assets/video/apresentacao.mp4" type="video/mp4">
+            <!-- Texto de recurso (fallback) para navegadores sem suporte a <video> -->
+            O seu navegador não suporta a reprodução deste vídeo.
+            Pode <a href="assets/video/apresentacao.mp4">descarregar o ficheiro aqui</a>.
+          </video>
+        </div>
+
+        <!-- Bloco do áudio local -->
+        <div class="audio-block">
+          <p class="audio-label">
+            <i class="fa-solid fa-microphone"></i> Mensagem de boas-vindas
+          </p>
+          <!-- Elemento <audio> nativo com controls; preload="none" evita descarregar o ficheiro até o utilizador interagir -->
+          <audio controls preload="none">
+            <!-- Dois <source>, com type correto cada um (mp3 = audio/mpeg, wav = audio/wav), demonstrando múltiplos formatos -->
+            <source src="assets/audio/apresentacao.mp3" type="audio/mpeg">
+            <source src="assets/audio/apresentacao.wav" type="audio/wav">
+            <!-- Texto de recurso (fallback) para navegadores sem suporte a <audio> -->
+            O seu navegador não suporta o elemento de áudio.
+            Pode <a href="assets/audio/apresentacao.mp3">descarregar o ficheiro aqui</a>.
+          </audio>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SECÇÃO "Porquê trabalhar comigo": 3 cartões ===================== -->
+    <section class="container section-compact-top">
+      <span class="eyebrow">Porquê trabalhar comigo</span>
+      <h2>Três coisas que levo para cada projeto</h2>
+      <!-- Grelha de cartões (reaproveita a classe .portfolio-grid, definida com CSS Grid) -->
+      <div class="portfolio-grid">
+        <!-- Cada <article> representa um conteúdo independente/autónomo (um argumento), daí o uso semântico de <article> -->
+        <article class="card animate-in">
+          <div class="card-body">
+            <!-- Ícone Font Awesome com cor definida via variável CSS -->
+            <h3><i class="fa-solid fa-code icon-teal"></i> Código organizado</h3>
+            <p>HTML semântico, CSS estruturado e Java orientado a objetos — sempre pensando em quem lê o código depois de mim.</p>
+          </div>
+        </article>
+        <article class="card animate-in">
+          <div class="card-body">
+            <h3><i class="fa-solid fa-people-group icon-gold"></i> Contexto local</h3>
+            <p>Projetos pensados para a realidade moçambicana: legislação laboral, mobile money, ligação intermitente.</p>
+          </div>
+        </article>
+        <article class="card animate-in">
+          <div class="card-body">
+            <h3><i class="fa-solid fa-arrows-rotate icon-red"></i> Iteração constante</h3>
+            <p>Entrego versões funcionais cedo e melhoro com feedback, em vez de perseguir a perfeição de uma só vez.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== RODAPÉ (partilhado por todas as páginas) ===================== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <!-- Coluna 1: dados de contacto -->
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><i class="fa-solid fa-envelope"></i> denilsonsansaouate@gmail.com</li>
+          <li><i class="fa-solid fa-phone"></i> +258 84 475 3108</li>
+          <li><i class="fa-solid fa-location-dot"></i> Beira, Moçambique</li>
+        </ul>
+      </div>
+      <!-- Coluna 2: redes sociais; target="_blank" abre em nova aba, rel="noopener" por segurança (evita acesso da nova aba à janela de origem) -->
+      <div class="footer-col">
+        <h4>Redes sociais</h4>
+        <ul>
+          <li><a href="https://github.com/DenilsonUate" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a></li>
+          <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+          <li><a href="https://wa.me/258844753108" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
+        </ul>
+      </div>
+      <!-- Coluna 3: atalhos para as restantes páginas do site -->
+      <div class="footer-col">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="about.html">Currículo</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <li><a href="contact.html">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Assinatura final, no formato "Desenvolvido por Nome Apelido" pedido no enunciado -->
+    <p class="footer-bottom">Desenvolvido por Denilson Uate — © 2026</p>
+  </footer>
+
+</body>
+</html>

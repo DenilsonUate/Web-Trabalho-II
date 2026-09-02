@@ -1,0 +1,199 @@
+<!-- Documento HTML5 -->
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+  <meta charset="UTF-8">
+  <!-- Viewport responsivo -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto — Denilson Uate</title>
+  <meta name="description" content="Formulário de contacto de Denilson, com validação nativa em HTML5.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="stylesheet" href="css/responsivo.css">
+</head>
+<body>
+
+  <!-- ===================== CABEÇALHO (idêntico ao das outras páginas) ===================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Denilson<span>.dev</span></a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">Currículo</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <li><a href="hobbies.html">Hobbies</a></li>
+          <!-- Página atual: "Contacto" -->
+          <li><a href="contact.html" class="active">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== FAIXA DE TÍTULO DA PÁGINA ===================== -->
+    <div class="page-banner">
+      <div class="container">
+        <span class="eyebrow">Vamos falar</span>
+        <h1>Contacto</h1>
+        <p>Preencha o formulário abaixo para entrar em contacto comigo.</p>
+      </div>
+    </div>
+
+    <section>
+      <!-- .contact-layout organiza formulário + cartão lateral em grelha de 2 colunas em ecrãs largos -->
+      <div class="container contact-layout">
+
+        <!-- action="#" e method="post" são apenas ilustrativos (não há backend); novalidate desliga a bolha de erro
+             padrão do navegador para usarmos o estilo :invalid/:valid definido no CSS, mas os atributos
+             required/pattern/min/max/minlength/maxlength continuam a validar nativamente -->
+        <form class="contact-form" action="#" method="post" novalidate>
+
+          <!-- <fieldset> agrupa campos relacionados; <legend> dá o título do grupo (exigido pelo enunciado) -->
+          <fieldset>
+            <legend>Dados pessoais</legend>
+            <div class="form-row">
+              <div class="form-field">
+                <!-- <label for="nome"> associado ao input pelo id="nome" (acessibilidade) -->
+                <label for="nome">Nome completo *</label>
+                <!-- Campo de texto: required (obrigatório), minlength/maxlength (limites de caracteres) -->
+                <input type="text" id="nome" name="nome" placeholder="O seu nome" required minlength="3" maxlength="80">
+              </div>
+              <div class="form-field">
+                <label for="email">Email *</label>
+                <!-- type="email": o navegador valida automaticamente o formato de email -->
+                <input type="email" id="email" name="email" placeholder="nome@exemplo.com" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="telefone">Telefone (Moçambique) *</label>
+                <!-- type="tel" + pattern: expressão regular definida por mim para validar números moçambicanos de 9 dígitos -->
+                <input type="tel" id="telefone" name="telefone" placeholder="84 475 3108"
+                       pattern="8[2-7][0-9]{7}" required>
+                <!-- Texto de ajuda explicando o formato esperado pelo pattern -->
+                <span class="hint">Formato: 9 dígitos, começando por 82–87 (sem espaços)</span>
+              </div>
+              <div class="form-field">
+                <label for="data">Data preferida de contacto</label>
+                <!-- type="date": seletor de calendário nativo; min impede escolher datas anteriores ao início do prazo -->
+                <input type="date" id="data" name="data" min="2026-09-01">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Detalhes do pedido</legend>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="orcamento">Orçamento aproximado (em MZN, milhares)</label>
+                <!-- type="number" com min/max/step: limita o valor a um intervalo razoável, em passos de 5 -->
+                <input type="number" id="orcamento" name="orcamento" min="5" max="500" step="5" placeholder="ex: 50">
+              </div>
+              <div class="form-field">
+                <label for="assunto">Assunto</label>
+                <!-- <select> com <option>: primeira opção desativada e pré-selecionada, a funcionar como placeholder -->
+                <select id="assunto" name="assunto" required>
+                  <option value="" disabled selected>Selecione um assunto</option>
+                  <option value="projeto-web">Projeto web</option>
+                  <option value="projeto-desktop">Aplicação desktop (Java/JavaFX)</option>
+                  <option value="colaboracao-academica">Colaboração académica</option>
+                  <option value="outro">Outro assunto</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Grupo de botões de rádio: mesmo "name" faz com que só um possa ser selecionado de cada vez -->
+            <div class="form-field form-field-choice">
+              <label>Como prefere ser contactado? *</label>
+              <div class="choice-group">
+                <label><input type="radio" name="preferencia" value="email" required> Email</label>
+                <label><input type="radio" name="preferencia" value="telefone"> Telefone</label>
+                <label><input type="radio" name="preferencia" value="whatsapp"> WhatsApp</label>
+              </div>
+            </div>
+
+            <!-- Grupo de checkboxes: "name" igual mas cada um pode ser selecionado independentemente -->
+            <div class="form-field form-field-choice">
+              <label>Interesses (opcional)</label>
+              <div class="choice-group">
+                <label><input type="checkbox" name="interesses" value="web"> Desenvolvimento web</label>
+                <label><input type="checkbox" name="interesses" value="desktop"> Aplicações desktop</label>
+                <label><input type="checkbox" name="interesses" value="bd"> Bases de dados</label>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="anexo">Anexar CV ou portfólio (PDF)</label>
+              <!-- type="file" com accept: restringe a seleção a ficheiros PDF apenas -->
+              <input type="file" id="anexo" name="anexo" accept=".pdf,application/pdf">
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Mensagem</legend>
+            <div class="form-field">
+              <label for="mensagem">A sua mensagem *</label>
+              <!-- <textarea> para texto longo; required + minlength/maxlength controlam o tamanho da mensagem -->
+              <textarea id="mensagem" name="mensagem" placeholder="Escreva aqui a sua mensagem..." required minlength="10" maxlength="600"></textarea>
+            </div>
+          </fieldset>
+
+          <!-- Botão de envio; nota a avisar que não há envio real (projeto académico, sem backend) -->
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Enviar mensagem</button>
+            <span class="form-note">Campos com * são obrigatórios. Nenhum dado é enviado — este é um projeto académico.</span>
+          </div>
+        </form>
+
+        <!-- <aside> por ser conteúdo relacionado mas independente do formulário principal (uso semântico exigido no enunciado) -->
+        <aside class="contact-info-card">
+          <h3>Outras formas de contacto</h3>
+          <ul>
+            <li><i class="fa-solid fa-envelope icon-teal"></i> denilsonsansaouate@gmail.com</li>
+            <li><i class="fa-solid fa-phone icon-gold"></i> +258 84 475 3108</li>
+            <li><i class="fa-solid fa-location-dot icon-red"></i> Beira, Moçambique</li>
+            <li><a href="https://github.com/DenilsonUate" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> github.com/DenilsonUate</a></li>
+            <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/denilson</a></li>
+          </ul>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== RODAPÉ (idêntico ao das outras páginas) ===================== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><i class="fa-solid fa-envelope"></i> denilsonsansaouate@gmail.com</li>
+          <li><i class="fa-solid fa-phone"></i> +258 84 475 3108</li>
+          <li><i class="fa-solid fa-location-dot"></i> Beira, Moçambique</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Redes sociais</h4>
+        <ul>
+          <li><a href="https://github.com/DenilsonUate" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a></li>
+          <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+          <li><a href="https://wa.me/258844753108" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="about.html">Currículo</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <li><a href="contact.html">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-bottom">Desenvolvido por Denilson Uate — © 2026</p>
+  </footer>
+
+</body>
+</html>

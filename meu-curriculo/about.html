@@ -1,0 +1,187 @@
+<!-- Documento HTML5 -->
+<!DOCTYPE html>
+<!-- lang="pt-MZ": português de Moçambique -->
+<html lang="pt-MZ">
+<head>
+  <!-- Codificação de caracteres UTF-8 -->
+  <meta charset="UTF-8">
+  <!-- Viewport responsivo, obrigatório em todas as páginas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Título específico desta página, mostrado na aba do navegador -->
+  <title>Currículo — Denilson Uate</title>
+  <!-- Meta descrição específica desta página, para motores de busca -->
+  <meta name="description" content="Formação académica, experiência e competências técnicas de Denilson.">
+  <!-- Pré-conexão ao Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Fontes usadas no site (mesmas em todas as páginas, para consistência visual) -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Ícones Font Awesome via CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- CSS partilhado -->
+  <link rel="stylesheet" href="css/estilo.css">
+  <!-- CSS responsivo -->
+  <link rel="stylesheet" href="css/responsivo.css">
+</head>
+<body>
+
+  <!-- ===================== CABEÇALHO (idêntico ao das outras páginas) ===================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Denilson<span>.dev</span></a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <!-- Esta é a página "Currículo": o link correspondente recebe a classe "active" -->
+          <li><a href="about.html" class="active">Currículo</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <li><a href="hobbies.html">Hobbies</a></li>
+          <li><a href="contact.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== FAIXA DE TÍTULO DA PÁGINA ===================== -->
+    <div class="page-banner">
+      <div class="container">
+        <span class="eyebrow">Sobre mim</span>
+        <!-- h1 único desta página -->
+        <h1>Currículo</h1>
+        <p>Formação, competências técnicas e certificados até agora.</p>
+      </div>
+    </div>
+
+    <!-- ===================== SECÇÃO: Formação, experiência e certificados ===================== -->
+    <section>
+      <div class="container">
+        <!-- Grelha de 2 colunas em ecrãs largos (texto à esquerda, certificados à direita) -->
+        <div class="cv-grid">
+          <div>
+            <h2>Formação académica</h2>
+            <!-- Lista ORDENADA (<ol>): mostra números 1, 2... — usada porque a formação segue uma ordem cronológica -->
+            <ol class="cv-list timeline">
+              <li>
+                <h3>Licenciatura em Informática — Programação e Design Web</h3>
+                <p class="cv-meta">Universidade Licungo, Faculdade de Ciências e Tecnologia — Beira</p>
+                <p class="cv-meta cv-meta-mono">2º ano · em curso</p>
+              </li>
+              <li>
+                <h3>Ensino secundário</h3>
+                <p class="cv-meta">Concluído antes do ingresso na universidade</p>
+              </li>
+            </ol>
+
+            <h2 class="section-gap-top">Experiência &amp; projetos académicos</h2>
+            <!-- Lista NÃO ORDENADA (<ul>): mostra marcador • — usada porque os itens não têm uma ordem específica entre si -->
+            <ul class="cv-list">
+              <li>Desenvolvimento de aplicações desktop em Java/JavaFX para disciplinas de Programação Orientada a Objetos</li>
+              <li>Construção de páginas e sistemas web (HTML, CSS, JavaScript) em trabalhos práticos da faculdade</li>
+              <li>Modelagem de bases de dados relacionais (MySQL) em exercícios de Sistemas de Gestão de Bases de Dados</li>
+              <li>Trabalho em equipa em projetos de grupo, com divisão de tarefas e apresentações</li>
+            </ul>
+          </div>
+
+          <!-- Grelha de certificados: cada um envolvido em <figure>+<figcaption>, como exige o enunciado para imagens com legenda -->
+          <div class="certificates-grid">
+            <figure class="certificate">
+              <img src="assets/img/cert1.png" alt="Certificado de conclusão do curso de Fundamentos de Desenvolvimento Web" width="600" height="420">
+              <figcaption>Fundamentos de Desenvolvimento Web</figcaption>
+            </figure>
+            <figure class="certificate">
+              <img src="assets/img/cert2.png" alt="Certificado de conclusão do curso de Programação Orientada a Objetos em Java" width="600" height="420">
+              <figcaption>Programação Orientada a Objetos — Java</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SECÇÃO: Tabela de competências técnicas ===================== -->
+    <section>
+      <div class="container">
+        <h2>Competências técnicas</h2>
+        <!-- Tabela com <thead>/<tbody>, exigida pelo enunciado; caption descreve o conteúdo da tabela para acessibilidade -->
+        <table class="skills-table">
+          <caption>Nível de proficiência autoavaliado por tecnologia</caption>
+          <thead>
+            <tr>
+              <!-- scope="col" indica que estes <th> são cabeçalhos de coluna (acessibilidade) -->
+              <th scope="col">Área</th>
+              <th scope="col">Tecnologia</th>
+              <th scope="col">Nível</th>
+              <!-- colspan="2" funde duas colunas visuais numa só célula de cabeçalho -->
+              <th scope="col" colspan="2">Contexto de uso</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <!-- rowspan="2": esta célula "Desktop" ocupa 2 linhas (Java + JavaFX), agrupando-as visualmente -->
+              <th scope="row" rowspan="2">Desktop</th>
+              <td>Java</td>
+              <!-- Barra de nível preenchida via width inline (percentagem), usando a classe .level definida no CSS -->
+              <td><span class="level level-85"></span></td>
+              <td colspan="2">Aplicações académicas orientadas a objetos</td>
+            </tr>
+            <tr>
+              <!-- Esta linha não repete o <th rowspan>, porque já está coberta pelo rowspan da linha anterior -->
+              <td>JavaFX</td>
+              <td><span class="level level-80"></span></td>
+              <td colspan="2">Interfaces gráficas para sistemas de gestão</td>
+            </tr>
+            <tr>
+              <th scope="row" rowspan="2">Web</th>
+              <td>HTML5 &amp; CSS3</td>
+              <td><span class="level level-90"></span></td>
+              <td colspan="2">Sites institucionais e portefólios</td>
+            </tr>
+            <tr>
+              <td>JavaScript</td>
+              <td><span class="level level-65"></span></td>
+              <td colspan="2">Interatividade e integrações simples</td>
+            </tr>
+            <tr>
+              <th scope="row">Dados</th>
+              <td>MySQL</td>
+              <td><span class="level level-70"></span></td>
+              <td colspan="2">Modelagem e consultas para sistemas académicos</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== RODAPÉ (idêntico ao das outras páginas) ===================== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><i class="fa-solid fa-envelope"></i> denilsonsansaouate@gmail.com</li>
+          <li><i class="fa-solid fa-phone"></i> +258 84 475 3108</li>
+          <li><i class="fa-solid fa-location-dot"></i> Beira, Moçambique</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Redes sociais</h4>
+        <ul>
+          <li><a href="https://github.com/DenilsonUate" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a></li>
+          <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+          <li><a href="https://wa.me/258844753108" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="about.html">Currículo</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <li><a href="contact.html">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-bottom">Desenvolvido por Denilson Uate — © 2026</p>
+  </footer>
+
+</body>
+</html>

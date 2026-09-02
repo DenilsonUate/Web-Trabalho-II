@@ -1,0 +1,151 @@
+<!-- Documento HTML5 -->
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+  <meta charset="UTF-8">
+  <!-- Viewport responsivo -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio — Denilson Uate</title>
+  <meta name="description" content="Projetos académicos e pessoais de Denilson, em Java/JavaFX e tecnologias web.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="stylesheet" href="css/responsivo.css">
+</head>
+<body>
+
+  <!-- ===================== CABEÇALHO (idêntico ao das outras páginas) ===================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Denilson<span>.dev</span></a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">Currículo</a></li>
+          <!-- Página atual: "Portfólio" -->
+          <li><a href="portfolio.html" class="active">Portfólio</a></li>
+          <li><a href="hobbies.html">Hobbies</a></li>
+          <li><a href="contact.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== FAIXA DE TÍTULO DA PÁGINA ===================== -->
+    <div class="page-banner">
+      <div class="container">
+        <span class="eyebrow">Trabalhos</span>
+        <h1>Portfólio</h1>
+        <p>Uma seleção de projetos académicos, construídos em Java/JavaFX e em tecnologias web.</p>
+      </div>
+    </div>
+
+    <!-- ===================== SECÇÃO: grelha de projetos (CSS Grid) ===================== -->
+    <section>
+      <div class="container">
+        <!-- .portfolio-grid é construída com CSS Grid (grid-template-columns: repeat(auto-fit, minmax(...))) -->
+        <div class="portfolio-grid">
+
+          <!-- Cada projeto é um <article>, por representar um conteúdo independente (imagem + título + descrição + link) -->
+          <article class="card animate-in">
+            <!-- Imagem do projeto com alt descritivo detalhado e width/height para evitar saltos de layout -->
+            <img src="assets/img/projeto1.png" alt="Captura de ecrã do JavaPath, plataforma JavaFX de aprendizagem de Java, mostrando o painel de módulos" width="800" height="500">
+            <div class="card-body">
+              <h3>JavaPath</h3>
+              <p>Plataforma desktop em JavaFX para aprender Java de forma guiada, com módulos, exercícios e acompanhamento de progresso. Trabalho de Conclusão de Curso (TCC).</p>
+              <!-- Link para o repositório GitHub do estudante -->
+              <a href="https://github.com/DenilsonUate" target="_blank" rel="noopener">Ver repositório <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </article>
+
+          <article class="card animate-in">
+            <img src="assets/img/projeto2.png" alt="Captura de ecrã do Nexus TCC, sistema de gestão de trabalhos de conclusão de curso, mostrando a lista de processos" width="800" height="500">
+            <div class="card-body">
+              <h3>Nexus TCC</h3>
+              <p>Sistema de página única (HTML, CSS e JavaScript) para gerir o processo de Trabalho de Conclusão de Curso na Universidade Licungo: propostas, orientadores e prazos.</p>
+              <a href="https://github.com/DenilsonUate" target="_blank" rel="noopener">Ver repositório <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </article>
+
+          <article class="card animate-in">
+            <img src="assets/img/projeto3.png" alt="Captura de ecrã do RH Moçambique, sistema de gestão de recursos humanos, mostrando a ficha de um colaborador" width="800" height="500">
+            <div class="card-body">
+              <h3>RH Moçambique</h3>
+              <p>Aplicação desktop JavaFX para gestão de recursos humanos alinhada com a legislação laboral moçambicana: contratos, faltas e processamento salarial.</p>
+              <a href="https://github.com/DenilsonUate" target="_blank" rel="noopener">Ver repositório <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </article>
+
+          <article class="card animate-in">
+            <img src="assets/img/projeto4.png" alt="Captura de ecrã do ZapConta, conceito de aplicação de gestão financeira com bot de WhatsApp" width="800" height="500">
+            <div class="card-body">
+              <h3>ZapConta</h3>
+              <p>Conceito de SaaS de gestão financeira pessoal para Moçambique, com registo de despesas por bot de WhatsApp — pensado para quem não tem acesso fácil a apps bancárias.</p>
+              <a href="https://github.com/DenilsonUate" target="_blank" rel="noopener">Ver repositório <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SECÇÃO: vídeo de demonstração incorporado via YouTube ===================== -->
+    <section class="media-block">
+      <div class="container">
+        <span class="eyebrow">Demonstração</span>
+        <h2>Vídeo de demonstração (incorporado via YouTube)</h2>
+        <p class="section-intro">
+          Enquanto não gravo uma demo dos projetos acima, fica aqui um vídeo em português sobre
+          HTML5 e CSS3 — do <em>Curso em Vídeo</em>, do professor Gustavo Guanabara — a título de
+          exemplo de integração via <code>&lt;iframe&gt;</code>.
+        </p>
+        <!-- <iframe> incorpora um vídeo do YouTube; title descreve o conteúdo para acessibilidade;
+             allowfullscreen permite ecrã inteiro; loading="lazy" adia o carregamento até ser necessário -->
+        <div class="video-wrapper">
+          <iframe
+            src="https://www.youtube.com/embed/Ejkb_YpuHWs"
+            title="Vídeo incorporado do YouTube — Curso em Vídeo de HTML5 e CSS3, em português"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== RODAPÉ (idêntico ao das outras páginas) ===================== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><i class="fa-solid fa-envelope"></i> denilsonsansaouate@gmail.com</li>
+          <li><i class="fa-solid fa-phone"></i> +258 84 475 3108</li>
+          <li><i class="fa-solid fa-location-dot"></i> Beira, Moçambique</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Redes sociais</h4>
+        <ul>
+          <li><a href="https://github.com/DenilsonUate" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a></li>
+          <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+          <li><a href="https://wa.me/258844753108" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="about.html">Currículo</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <li><a href="contact.html">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-bottom">Desenvolvido por Denilson Uate — © 2026</p>
+  </footer>
+
+</body>
+</html>

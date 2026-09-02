@@ -1,0 +1,112 @@
+<!-- Documento HTML5 -->
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+  <meta charset="UTF-8">
+  <!-- Viewport responsivo -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hobbies — Denilson Uate</title>
+  <meta name="description" content="Hobbies e interesses de Denilson fora da programação.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="stylesheet" href="css/responsivo.css">
+</head>
+<body>
+
+  <!-- ===================== CABEÇALHO (idêntico ao das outras páginas) ===================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Denilson<span>.dev</span></a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">Currículo</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <!-- Página atual: "Hobbies" -->
+          <li><a href="hobbies.html" class="active">Hobbies</a></li>
+          <li><a href="contact.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== FAIXA DE TÍTULO DA PÁGINA ===================== -->
+    <div class="page-banner">
+      <div class="container">
+        <span class="eyebrow">Fora do código</span>
+        <h1>Hobbies &amp; interesses</h1>
+        <p>O que gosto de fazer quando não estou a programar.</p>
+      </div>
+    </div>
+
+    <!-- ===================== SECÇÃO: cartões de hobbies organizados com Flexbox ===================== -->
+    <section>
+      <div class="container">
+        <!-- .hobbies-flex usa Flexbox: flex-direction row, flex-wrap wrap, justify-content center, align-items stretch (ver estilo.css) -->
+        <div class="hobbies-flex">
+          <!-- Cada hobby é um <article>, com imagem ilustrativa (alt descritivo), título com ícone e breve descrição -->
+          <article class="card hobby-card animate-in">
+            <img src="assets/img/hobby1.png" alt="Ilustração representando programação como hobby" width="400" height="400">
+            <h3><i class="fa-solid fa-laptop-code icon-teal"></i> Programar por prazer</h3>
+            <p class="hobby-desc">Pequenos projetos pessoais fora das disciplinas, só para aprender algo novo.</p>
+          </article>
+
+          <article class="card hobby-card animate-in">
+            <img src="assets/img/hobby2.png" alt="Ilustração representando futebol como hobby" width="400" height="400">
+            <h3><i class="fa-solid fa-futbol icon-gold"></i> Futebol</h3>
+            <p class="hobby-desc">Jogos com amigos ao fim de semana — ótimo para desligar do ecrã.</p>
+          </article>
+
+          <article class="card hobby-card animate-in">
+            <img src="assets/img/hobby3.png" alt="Ilustração representando música como hobby" width="400" height="400">
+            <h3><i class="fa-solid fa-music icon-red"></i> Música</h3>
+            <p class="hobby-desc">Ouvir e descobrir artistas moçambicanos e internacionais enquanto codifico.</p>
+          </article>
+
+          <!-- Ícone com cor fixa (não usa variável CSS) apenas neste cartão, como variação intencional -->
+          <article class="card hobby-card animate-in">
+            <img src="assets/img/hobby4.png" alt="Ilustração representando leitura como hobby" width="400" height="400">
+            <h3><i class="fa-solid fa-book icon-indigo"></i> Leitura</h3>
+            <p class="hobby-desc">Livros de tecnologia e, de vez em quando, ficção para variar o ritmo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== RODAPÉ (idêntico ao das outras páginas) ===================== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><i class="fa-solid fa-envelope"></i> denilsonsansaouate@gmail.com</li>
+          <li><i class="fa-solid fa-phone"></i> +258 84 475 3108</li>
+          <li><i class="fa-solid fa-location-dot"></i> Beira, Moçambique</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Redes sociais</h4>
+        <ul>
+          <li><a href="https://github.com/DenilsonUate" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a></li>
+          <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+          <li><a href="https://wa.me/258844753108" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="about.html">Currículo</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <li><a href="contact.html">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-bottom">Desenvolvido por Denilson Uate — © 2026</p>
+  </footer>
+
+</body>
+</html>
