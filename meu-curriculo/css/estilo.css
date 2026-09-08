@@ -6,18 +6,17 @@
 
 /* -------------------- 1. Variáveis globais -------------------- */
 :root {
-  /* Paleta azul-ciano e branco */
-  /* Paleta azul-ciano e branco — fundo claro */
-  --color-bg: #FFFFFF;
-  --color-surface: #F1F9FC;
-  --color-surface-2: #E3F1F7;
-  --color-gold: #0891B2;
-  --color-teal: #2563EB;
-  --color-red: #0B2540;
-  --color-cream: #0B1F30;
-  --color-muted: #55708A;
-  --color-border: #D4E6EF;
-  --color-error: #DC2626; /* usado apenas para sinalizar campos inválidos no formulário */
+  /* Paleta azul-ciano — fundo intermédio (nem muito claro, nem muito escuro) */
+  --color-bg: #182430;
+  --color-surface: #202E3D;
+  --color-surface-2: #283749;
+  --color-gold: #22D3EE;
+  --color-teal: #5B9BF5;
+  --color-red: #EAF6FB;
+  --color-cream: #E9F2F7;
+  --color-muted: #8CA0B3;
+  --color-border: #324457;
+  --color-error: #FF6B6B; /* usado apenas para sinalizar campos inválidos no formulário */
 
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;
   --font-body: "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
@@ -121,7 +120,7 @@ header.site-header {
   position: sticky; /* ver explicação de 'position' mais abaixo */
   top: 0;
   z-index: 100;
-  background-color: rgba(255, 255, 255, 0.94);
+  background-color: rgba(24, 36, 48, 0.92);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--color-border);
 }
@@ -630,7 +629,7 @@ table.skills-table tbody td {
 
 /* nth-child: zebra striping nas linhas da tabela */
 table.skills-table tbody tr:nth-child(even) {
-  background-color: rgba(11, 37, 64, 0.035);
+  background-color: rgba(255, 255, 255, 0.035);
 }
 
 /* Barra de nível de proficiência: a largura é definida inline em cada linha da tabela (ex: width:85%) */
@@ -999,4 +998,65 @@ textarea:not(:placeholder-shown):valid {
 .hobby-desc {
   color: var(--color-muted);
   font-size: 0.9rem;
+}
+
+/* =========================================================
+   18. ANIMAÇÕES DE TEXTO — entrada em cascata dos títulos/
+   parágrafos e efeito de "máquina de escrever" no rótulo
+   (.eyebrow) de cada página.
+   ========================================================= */
+
+/* Atraso crescente aplicado em conjunto com .animate-in, para que os
+   elementos de texto apareçam em cascata, um a seguir ao outro,
+   em vez de todos ao mesmo tempo */
+.delay-1 { animation-delay: 0.15s; }
+.delay-2 { animation-delay: 0.3s; }
+.delay-3 { animation-delay: 0.45s; }
+.delay-4 { animation-delay: 0.6s; }
+.delay-5 { animation-delay: 0.75s; }
+
+/* Efeito de "máquina de escrever": o texto aparece letra a letra,
+   com um cursor a piscar no final. Usa-se overflow:hidden + largura
+   fixa em "ch" (1ch ≈ largura de 1 caractere na fonte monoespaçada) */
+.eyebrow-typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  border-right: 3px solid var(--color-teal);
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+/* Uma largura (em "ch") e uma animação de "typing" por cada texto de
+   .eyebrow existente no site — cada página usa a que corresponde ao
+   número de caracteres do seu texto */
+.tw-w10 { width: 10ch; animation: typing-10 0.8s steps(10, end) forwards, blink-caret 0.75s step-end infinite; }
+.tw-w12 { width: 12ch; animation: typing-12 0.9s steps(12, end) forwards, blink-caret 0.75s step-end infinite; }
+.tw-w15 { width: 15ch; animation: typing-15 1s steps(15, end) forwards, blink-caret 0.75s step-end infinite; }
+.tw-w28 { width: 28ch; animation: typing-28 1.4s steps(28, end) forwards, blink-caret 0.75s step-end infinite; }
+
+@keyframes typing-10 {
+  from { width: 0; }
+  to { width: 10ch; }
+}
+
+@keyframes typing-12 {
+  from { width: 0; }
+  to { width: 12ch; }
+}
+
+@keyframes typing-15 {
+  from { width: 0; }
+  to { width: 15ch; }
+}
+
+@keyframes typing-28 {
+  from { width: 0; }
+  to { width: 28ch; }
+}
+
+/* Cursor a piscar: alterna a cor da borda direita entre visível e transparente */
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--color-teal); }
 }
