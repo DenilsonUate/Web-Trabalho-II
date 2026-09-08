@@ -1,4 +1,4 @@
-# DENILSON SANSAO UATE
+# Site de Currículo Pessoal — meu-curriculo
 
 **Estudante:** Denilson Uate
 **Turma:** 2º Ano — Programação e Design Web, Universidade Licungo (Faculdade de Ciências e Tecnologia)

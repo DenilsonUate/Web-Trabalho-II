@@ -1024,39 +1024,35 @@ textarea:not(:placeholder-shown):valid {
   white-space: nowrap;
   vertical-align: bottom;
   border-right: 3px solid var(--color-teal);
-  /* Anula o letter-spacing de .eyebrow: com espaçamento extra entre letras,
-     a largura em "ch" deixava de bater certo com o texto e cortava as
-     últimas letras. Sem letter-spacing, 1 caractere = 1ch de forma exata. */
-  letter-spacing: normal;
   animation: blink-caret 0.75s step-end infinite;
 }
 
 /* Uma largura (em "ch") e uma animação de "typing" por cada texto de
    .eyebrow existente no site — cada página usa a que corresponde ao
-   número de caracteres do seu texto (+ uma pequena margem de segurança) */
-.tw-w10 { width: 11ch; animation: typing-10 0.8s steps(11, end) forwards, blink-caret 0.75s step-end infinite; }
-.tw-w12 { width: 13ch; animation: typing-12 0.9s steps(13, end) forwards, blink-caret 0.75s step-end infinite; }
-.tw-w15 { width: 17ch; animation: typing-15 1s steps(17, end) forwards, blink-caret 0.75s step-end infinite; }
-.tw-w28 { width: 30ch; animation: typing-28 1.4s steps(30, end) forwards, blink-caret 0.75s step-end infinite; }
+   número de caracteres do seu texto */
+.tw-w10 { width: 10ch; animation: typing-10 0.8s steps(10, end) forwards, blink-caret 0.75s step-end infinite; }
+.tw-w12 { width: 12ch; animation: typing-12 0.9s steps(12, end) forwards, blink-caret 0.75s step-end infinite; }
+.tw-w15 { width: 15ch; animation: typing-15 1s steps(15, end) forwards, blink-caret 0.75s step-end infinite; }
+.tw-w28 { width: 28ch; animation: typing-28 1.4s steps(28, end) forwards, blink-caret 0.75s step-end infinite; }
 
 @keyframes typing-10 {
   from { width: 0; }
-  to { width: 11ch; }
+  to { width: 10ch; }
 }
 
 @keyframes typing-12 {
   from { width: 0; }
-  to { width: 13ch; }
+  to { width: 12ch; }
 }
 
 @keyframes typing-15 {
   from { width: 0; }
-  to { width: 17ch; }
+  to { width: 15ch; }
 }
 
 @keyframes typing-28 {
   from { width: 0; }
-  to { width: 30ch; }
+  to { width: 28ch; }
 }
 
 /* Cursor a piscar: alterna a cor da borda direita entre visível e transparente */
